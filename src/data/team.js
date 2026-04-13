@@ -5,7 +5,7 @@ export const team = [
     specialty: "Cortes modernos",
     rating: 4.9,
     reviews: 128,
-    image: "/imagenes_barberia/barbero1.png",
+    image: "/images/carlos.svg",
     availability: ["Lunes", "Martes", "Miércoles"],
   },
   {
@@ -14,7 +14,7 @@ export const team = [
     specialty: "Fade y barba",
     rating: 4.8,
     reviews: 94,
-    image: "/imagenes_barberia/barbero2.png",
+    image: "/images/lucas.svg",
     availability: ["Miércoles", "Jueves", "Viernes"],
   },
   {
@@ -23,7 +23,7 @@ export const team = [
     specialty: "Clásico & navaja",
     rating: 5.0,
     reviews: 76,
-    image: "/imagenes_barberia/barbero3.png",
+    image: "/images/mateo.svg",
     availability: ["Jueves", "Viernes", "Sábado"],
   },
 ]

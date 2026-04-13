@@ -1,14 +1,17 @@
 export default function TeamCard({ member, onAvailability }) {
   return (
-    <article className="card">
-      <img
-        className="team-card__img"
-        src={member.image}
-        alt={`Retrato de ${member.name}, barbero`}
-        width={400}
-        height={533}
-        loading="lazy"
-      />
+    <article className="card team-card">
+      <div className="team-card__photo">
+        <img
+          className="team-card__img"
+          src={member.image}
+          alt={`Retrato de ${member.name}, barbero`}
+          width={400}
+          height={533}
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
       <h3 className="card__title mt-4">{member.name}</h3>
       <p className="muted">{member.specialty}</p>
       <p>

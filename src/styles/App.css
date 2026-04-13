@@ -264,13 +264,6 @@
   min-width: 160px;
 }
 
-.team-card__img {
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  border-bottom: var(--line-thick) solid var(--color-border);
-  filter: grayscale(0.15);
-}
-
 .tip-card__icon {
   width: 40px;
   height: 40px;

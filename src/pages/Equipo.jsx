@@ -15,7 +15,7 @@ export default function Equipo({ onReserveBarber }) {
       </Reveal>
       <div className="grid-3">
         {team.map((m, i) => (
-          <Reveal key={m.id} delay={i * 75}>
+          <Reveal key={m.id} delay={i * 75} className="min-w-0 w-full">
             <TeamCard member={m} onAvailability={() => onReserveBarber?.(m.id)} />
           </Reveal>
         ))}
