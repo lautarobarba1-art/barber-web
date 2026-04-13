@@ -1,0 +1,30 @@
+:root {
+  --color-primary: #1a1a1a;
+  --color-secondary: #f2f1ec;
+  --color-accent: #0a0a0a;
+  --color-accent-dark: #0a0a0a;
+  --color-text: #1a1a1a;
+  --color-text-light: #666666;
+  --color-border: #1a1a1a;
+
+  --font-display: "Bebas Neue", Impact, system-ui, sans-serif;
+  --font-serif: "Bebas Neue", Impact, system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+  --font-price: "JetBrains Mono", ui-monospace, monospace;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-xxl: 6rem;
+
+  --line-thick: 2px;
+  --radius-none: 0;
+  --transition-fast: 200ms ease-in-out;
+  --transition-med: 280ms ease-in-out;
+
+  --container-max: 1200px;
+  --header-height: 72px;
+}

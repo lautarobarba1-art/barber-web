@@ -1,0 +1,308 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f2f1ec;
+  --font-family-display: "Bebas Neue", ui-sans-serif, system-ui, sans-serif;
+  --font-family-price: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@keyframes editorial-rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-drift {
+  0% {
+    transform: scale(1.05) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.1) translate(-1.2%, 0.6%);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html,
+  body {
+    margin: 0;
+  }
+
+  #root {
+    min-height: 100%;
+  }
+
+  /*
+   * Altura de la barra (aprox.): el hero usa -mt para que la imagen llegue al tope del viewport
+   * y el vidrio del menú se vea sobre la foto, no sobre el color papel del layout.
+   */
+  :root {
+    --nav-height: 3.85rem;
+  }
+  @media (min-width: 640px) {
+    :root {
+      --nav-height: 4.35rem;
+    }
+  }
+  @media (min-width: 768px) {
+    :root {
+      --nav-height: 5.75rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    :root {
+      --nav-height: 6.25rem;
+    }
+  }
+}
+
+/* Hero: una pantalla completa; no mezclar con min-h-0 en el mismo nodo (rompe iOS). */
+.hero-section {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: -webkit-fill-available;
+  height: 100vh;
+  height: 100svh;
+  max-height: 100svh;
+}
+
+@supports (height: 100dvh) {
+  .hero-section {
+    min-height: 100dvh;
+    height: 100dvh;
+    max-height: 100dvh;
+  }
+}
+
+@layer components {
+  .btn-editorial {
+    @apply relative overflow-hidden rounded-none border border-black/20 bg-transparent px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.35em] text-black disabled:cursor-not-allowed disabled:opacity-30;
+    transition:
+      transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.4s ease,
+      border-color 0.35s ease,
+      letter-spacing 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.45s ease,
+      background-color 0.35s ease;
+  }
+  .btn-editorial:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 28px -14px rgba(0, 0, 0, 0.35);
+    letter-spacing: 0.42em;
+    opacity: 0.88;
+  }
+  .btn-editorial:active:not(:disabled) {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: 0 6px 16px -10px rgba(0, 0, 0, 0.3);
+  }
+  .btn-editorial:focus-visible {
+    outline: 2px solid rgba(0, 0, 0, 0.45);
+    outline-offset: 3px;
+  }
+
+  .btn-editorial-solid {
+    @apply relative overflow-hidden rounded-none border border-black bg-black px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.35em] text-[#f2f1ec] disabled:cursor-not-allowed disabled:opacity-35;
+    transition:
+      transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.4s ease,
+      letter-spacing 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.4s ease,
+      filter 0.35s ease;
+  }
+  .btn-editorial-solid:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 32px -12px rgba(0, 0, 0, 0.55);
+    letter-spacing: 0.42em;
+    opacity: 0.96;
+    filter: brightness(1.06);
+  }
+  .btn-editorial-solid:active:not(:disabled) {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: 0 8px 18px -10px rgba(0, 0, 0, 0.45);
+  }
+  .btn-editorial-solid:focus-visible {
+    outline: 2px solid rgba(242, 241, 236, 0.95);
+    outline-offset: 3px;
+  }
+  .btn-editorial-solid::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      105deg,
+      transparent 35%,
+      rgba(255, 255, 255, 0.14) 50%,
+      transparent 65%
+    );
+    transform: translateX(-130%);
+    transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .btn-editorial-solid:hover:not(:disabled)::after {
+    transform: translateX(130%);
+  }
+
+  .editorial-rise {
+    animation: editorial-rise 0.95s ease-out forwards;
+    opacity: 0;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(2rem);
+    transition:
+      opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform, opacity;
+  }
+  .reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+    will-change: auto;
+  }
+}
+
+/* Sin @layer: App.css define `a { color: inherit }` sin capa y gana sobre @layer components. */
+a.btn-editorial-solid {
+  color: var(--color-paper);
+}
+
+/* Hero estilo referencia: CTA píldora blanca + ghost blanco */
+.btn-hero-primary {
+  @apply relative inline-flex items-center justify-center overflow-hidden rounded-full bg-white px-9 py-3.5 text-[11px] font-bold uppercase tracking-[0.22em] text-black;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease;
+}
+.btn-hero-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.45);
+}
+.btn-hero-primary:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.btn-hero-ghost {
+  @apply inline-flex items-center justify-center rounded-full border-2 border-white bg-transparent px-9 py-3 text-[11px] font-bold uppercase tracking-[0.22em] text-white;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+.btn-hero-ghost:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+.btn-hero-ghost:active {
+  transform: translateY(0) scale(0.98);
+}
+
+a.btn-hero-primary {
+  color: #0a0a0a;
+  text-decoration: none;
+}
+a.btn-hero-ghost {
+  color: #fff;
+  text-decoration: none;
+}
+
+/*
+ * Hero: sin bloque sólido — las letras “flotan” sobre la foto con halo + contorno.
+ * Vence `h1 { color: primary }` del CSS legacy.
+ */
+.hero-text h1 {
+  margin: 0;
+  color: #fafaf9;
+}
+
+.hero-text .hero-title-line {
+  color: #fafaf9;
+  /* Contorno fino oscuro alrededor del trazo (legible sobre claros y oscuros) */
+  -webkit-text-stroke: min(0.055em, 1.5px) rgba(0, 0, 0, 0.45);
+  paint-order: stroke fill;
+  /* Halo: varias sombras = volumen y separación respecto al fondo */
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.9),
+    0 2px 6px rgba(0, 0, 0, 0.85),
+    0 6px 20px rgba(0, 0, 0, 0.65),
+    0 0 42px rgba(0, 0, 0, 0.45),
+    0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+.hero-text .hero-lead {
+  margin-top: 2rem;
+  margin-bottom: 0;
+  color: rgba(252, 252, 250, 0.98);
+  font-weight: 600;
+  -webkit-text-stroke: 0.4px rgba(0, 0, 0, 0.35);
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.92),
+    0 2px 10px rgba(0, 0, 0, 0.7),
+    0 0 22px rgba(0, 0, 0, 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-text .hero-title-line,
+  .hero-text .hero-lead {
+    -webkit-text-stroke: 0;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.85);
+  }
+  .btn-editorial:hover:not(:disabled),
+  .btn-editorial:active:not(:disabled),
+  .btn-editorial-solid:hover:not(:disabled),
+  .btn-editorial-solid:active:not(:disabled),
+  .btn-hero-primary:hover,
+  .btn-hero-primary:active,
+  .btn-hero-ghost:hover,
+  .btn-hero-ghost:active {
+    transform: none;
+    box-shadow: none;
+    letter-spacing: 0.35em;
+    filter: none;
+  }
+  .btn-editorial-solid::after {
+    display: none;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+  .hero-img-drift {
+    animation: none !important;
+  }
+}
+
+/* Drift en móvil puede dejar bordes negros con object-cover; solo desktop */
+@media (prefers-reduced-motion: no-preference) and (min-width: 1024px) {
+  .hero-img-drift {
+    animation: hero-drift 32s ease-in-out infinite alternate;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hero-img-drift {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gallery-tile-img {
+    transition: transform 1.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .group:hover .gallery-tile-img {
+    transform: scale(1.045);
+  }
+}
