@@ -22,6 +22,7 @@ import MisTurnos from "./pages/MisTurnos.jsx"
 import PoliticaPrivacidad from "./pages/PoliticaPrivacidad.jsx"
 import EditorialGrain from "./components/EditorialGrain.jsx"
 import ScrollToTop from "./components/ScrollToTop.jsx"
+import CustomCursor from "./components/CustomCursor.jsx"
 import "./styles/App.css"
 
 function Shell() {
@@ -58,6 +59,7 @@ function Shell() {
   return (
     <div className="relative isolate min-h-dvh bg-[#f2f1ec] font-sans text-black antialiased">
       <ScrollToTop />
+      <CustomCursor />
       <EditorialGrain />
       <div className="relative z-10 flex min-h-dvh flex-col">
       <Navbar onOpenAuth={() => setAuthOpen(true)} />

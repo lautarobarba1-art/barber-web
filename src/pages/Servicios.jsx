@@ -82,7 +82,7 @@ export default function Servicios({ onReserve }) {
 
       <Reveal className="mt-16 md:mt-20">
         <section
-          className="promo-banner border border-black/10 bg-gradient-to-br from-black/[0.03] to-[#f2f1ec]"
+          className="promo-banner border border-black/10 bg-linear-to-br from-black/[0.03] to-[#f2f1ec]"
           aria-labelledby="promo-title"
         >
           <h2

@@ -114,7 +114,7 @@ export default function ReservationFlow({
 
   return (
     <div
-      className="fixed inset-0 z-[400] flex flex-col bg-[#f2f1ec]"
+      className="fixed inset-0 z-400 flex flex-col bg-[#f2f1ec]"
       role="dialog"
       aria-modal="true"
       aria-labelledby="reservation-title"

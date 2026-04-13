@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
 @theme {
+  /* Negro editorial: evita #000 puro (mejor en OLED / degradados) */
+  --color-black: #0a0a0a;
+  --color-zinc-950: #0a0a0a;
   --color-paper: #f2f1ec;
   --font-family-display: "Bebas Neue", ui-sans-serif, system-ui, sans-serif;
   --font-family-price: "JetBrains Mono", ui-monospace, monospace;
@@ -9,7 +12,7 @@
 @keyframes editorial-rise {
   from {
     opacity: 0;
-    transform: translateY(1.75rem);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -159,16 +162,28 @@
 
   .reveal {
     opacity: 0;
-    transform: translateY(2rem);
+    transform: translateY(20px);
     transition:
-      opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
-      transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+      opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
     will-change: transform, opacity;
   }
   .reveal-visible {
     opacity: 1;
     transform: translateY(0);
     will-change: auto;
+  }
+
+  /* Cursor personalizado (desktop): ocultar sistema; excepciones útiles */
+  @media (min-width: 1024px) {
+    html.has-custom-cursor body {
+      cursor: none !important;
+    }
+    html.has-custom-cursor input:not([type="hidden"]),
+    html.has-custom-cursor textarea,
+    html.has-custom-cursor [contenteditable="true"] {
+      cursor: text !important;
+    }
   }
 }
 
@@ -208,7 +223,7 @@ a.btn-editorial-solid {
 }
 
 a.btn-hero-primary {
-  color: #0a0a0a;
+  color: var(--color-black, #0a0a0a);
   text-decoration: none;
 }
 a.btn-hero-ghost {

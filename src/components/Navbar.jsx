@@ -87,7 +87,7 @@ export default function Navbar({ onOpenAuth }) {
     createPortal(
       <div
         id="mega-menu-panel"
-        className="fixed inset-0 z-[200] flex h-[100svh] min-h-0 w-full max-w-none flex-col bg-[#f2f1ec] supports-[height:100dvh]:h-[100dvh] lg:hidden"
+        className="fixed inset-0 z-200 flex h-svh min-h-0 w-full max-w-none flex-col bg-[#f2f1ec] supports-[height:100dvh]:h-dvh lg:hidden"
         role="dialog"
         aria-modal="true"
         aria-label="Menú de navegación"
@@ -142,7 +142,7 @@ export default function Navbar({ onOpenAuth }) {
     <>
     <header
       className={`sticky top-0 border-b transition-[background-color,box-shadow,border-color,backdrop-filter,z-index] duration-500 ease-out ${
-        menuOpen ? "z-[140]" : "z-50"
+        menuOpen ? "z-140" : "z-50"
       } ${
         overlay
           ? "border-white/15 bg-white/12 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] backdrop-blur-xl backdrop-saturate-150"

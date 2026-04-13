@@ -69,7 +69,7 @@ export default function AuthModal({ isOpen, onClose }) {
 
   return (
     <div
-      className="fixed inset-0 z-[500] flex flex-col bg-[#f2f1ec]"
+      className="fixed inset-0 z-500 flex flex-col bg-[#f2f1ec]"
       role="dialog"
       aria-modal="true"
       aria-labelledby="auth-modal-title"

@@ -1,11 +1,12 @@
 :root {
-  --color-primary: #1a1a1a;
+  /* Texto / bordes: gris carbón, no negro puro */
+  --color-primary: #141414;
   --color-secondary: #f2f1ec;
   --color-accent: #0a0a0a;
   --color-accent-dark: #0a0a0a;
-  --color-text: #1a1a1a;
-  --color-text-light: #666666;
-  --color-border: #1a1a1a;
+  --color-text: #141414;
+  --color-text-light: #5c5c5c;
+  --color-border: #141414;
 
   --font-display: "Bebas Neue", Impact, system-ui, sans-serif;
   --font-serif: "Bebas Neue", Impact, system-ui, sans-serif;

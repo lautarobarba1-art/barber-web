@@ -62,14 +62,14 @@ export default function Inicio({ onReserve }) {
     <article className="bg-[#f2f1ec] pb-20 pt-0 sm:pb-28 md:pb-44">
       {/* Hero: hero-section = 100dvh donde hay soporte (móvil); fallback remoto si falta PNG local */}
       <section
-        className="hero-section relative isolate -mt-[var(--nav-height)] w-full shrink-0 overflow-hidden bg-zinc-950"
+        className="hero-section relative isolate -mt-(--nav-height) w-full shrink-0 overflow-hidden bg-zinc-950"
         aria-labelledby="hero-heading"
       >
         {/* Capas solo absolute: la altura la fija .hero-section (evita colapso / h-full roto en iOS) */}
         <img
           src={heroSrc}
           alt="Interior y ambiente de la barbería Brutal Cut"
-          className="hero-img-drift absolute inset-0 z-0 min-h-full min-w-full object-cover object-center [transform:translateZ(0)]"
+          className="hero-img-drift absolute inset-0 z-0 min-h-full min-w-full object-cover object-center transform-[translateZ(0)]"
           width={1920}
           height={1080}
           sizes="100vw"
@@ -78,9 +78,9 @@ export default function Inicio({ onReserve }) {
           decoding="sync"
           onError={() => setHeroSrc((s) => (s === HERO_FALLBACK ? s : HERO_FALLBACK))}
         />
-        <div className="absolute inset-0 z-[1] bg-black/25" aria-hidden />
+        <div className="absolute inset-0 z-1 bg-black/25" aria-hidden />
         <div
-          className="absolute inset-0 z-[1] bg-gradient-to-r from-black/45 via-black/15 to-transparent"
+          className="absolute inset-0 z-1 bg-linear-to-r from-black/45 via-black/15 to-transparent"
           aria-hidden
         />
 
@@ -119,7 +119,8 @@ export default function Inicio({ onReserve }) {
       <div className="mx-auto mt-16 max-w-[1920px] border-t border-black/10 px-5 md:mt-20 md:px-10 lg:px-20" />
 
       {/* Pilares — grilla asimétrica */}
-      <section
+      <Reveal
+        as="section"
         className="mx-auto mt-20 max-w-[1920px] px-5 md:mt-28 md:px-10 lg:px-20"
         aria-labelledby="pillars-heading"
       >
@@ -149,10 +150,11 @@ export default function Inicio({ onReserve }) {
             ))}
           </div>
         </div>
-      </section>
+      </Reveal>
 
       {/* Galería — imágenes BN alto contraste */}
-      <section
+      <Reveal
+        as="section"
         className="mx-auto mt-28 max-w-[1920px] md:mt-40"
         aria-labelledby="gallery-heading"
       >
@@ -192,10 +194,13 @@ export default function Inicio({ onReserve }) {
             </Reveal>
           ))}
         </div>
-      </section>
+      </Reveal>
 
       {/* CTA final */}
-      <section className="mx-auto mt-28 max-w-[1920px] border-t border-black/10 px-5 pt-20 md:mt-40 md:px-10 md:pt-28 lg:px-20">
+      <Reveal
+        as="section"
+        className="mx-auto mt-28 max-w-[1920px] border-t border-black/10 px-5 pt-20 md:mt-40 md:px-10 md:pt-28 lg:px-20"
+      >
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-end">
           <Reveal className="lg:col-span-5 lg:col-start-2">
             <h2 className="font-display text-[clamp(1.75rem,4vw,2.75rem)] font-normal uppercase leading-tight tracking-[0.02em] text-black">
@@ -220,7 +225,7 @@ export default function Inicio({ onReserve }) {
             </div>
           </Reveal>
         </div>
-      </section>
+      </Reveal>
     </article>
   )
 }
